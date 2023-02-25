@@ -6,17 +6,21 @@ public class Employee_Management_System {
     }
     public static void Manage_System(){
         Scanner Input = new Scanner(System.in);
+        Scanner Input1 = new Scanner(System.in);
+        Scanner Input2 = new Scanner(System.in);
         int choice = Input.nextInt();
         switch (choice){
             case 1:
                 System.out.print("Enter Employee's name: ----------: ");
-                Input.next();
-                String Employee_Name = Input.nextLine();
+                Input.nextLine();
+                String Employee_Name = Input1.nextLine();
+                //System.out.println(Employee_Name);
                 System.out.print("Enter Employee's age: -----------: ");
                 int Employee_Age = Input.nextInt();
                 System.out.print("Enter Employee's Email: ---------: ");
-                Input.next();
-                String Employee_Email = Input.nextLine();
+                Input.nextLine();
+                String Employee_Email = Input2.nextLine();
+                //System.out.println(Employee_Email);
                 System.out.print("Enter Employee's Position: ------: ");
                 int Employee_Position = Input.nextInt();
                 System.out.print("Enter Employee's ID: ------------: ");
