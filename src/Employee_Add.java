@@ -25,7 +25,7 @@ public class Employee_Add extends EmployeeDetail{
     public void WriterFile(String file_name){
         try{
             FileWriter employee_writer = new FileWriter(file_name);
-            employee_writer.write(String.format("%s \n%s \n%s \n%s \n%s \n%s \n%s", super.Employee_Name, super.Employee_Age, super.Employee_Email, super.Employee_Position, super.Employee_ID, super.Employee_Salary, super.Employee_Position));
+            employee_writer.write(String.format("%s \n%s \n%s \n%s \n%s \n%s \n%s", super.Employee_Name, super.Employee_Age, super.Employee_Email, super.Employee_Position, super.Employee_ID, super.Employee_Salary, super.Employee_Contact));
             employee_writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);

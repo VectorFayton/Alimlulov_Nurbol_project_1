@@ -36,10 +36,15 @@ public class Employee_Management_System {
                 Main_Menu.MainMenu();
                 break;
             case 2:
+                System.out.print("Please Enter Employee's ID: ");
+                int ID = Input.nextInt();
+                Employee_Show.show_File(ID);
+                System.out.print("\nPress Enter to Continue\n");
+                Main_Menu.MainMenu();
                 break;
             case 3:
                 System.out.print("Please Enter Employee's ID: ");
-                int ID = Input.nextInt();
+                ID = Input.nextInt();
                 String file_name = String.format("file%s.txt", ID);
                 try {
                     Employee_Remove.Delete_File(file_name);
