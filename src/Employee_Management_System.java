@@ -27,7 +27,7 @@ public class Employee_Management_System {
                 long Employee_Contact = Input.nextLong();
                 Employee_Add Employee = new Employee_Add(Employee_Name, Employee_Age, Employee_Email, Employee_Position, Employee_ID, Employee_Salary, Employee_Contact);
                 Employee.Create_File();
-                System.out.print("\nPress Enter to Continue");
+                System.out.print("\nPress Enter to Continue\n");
                 Input.nextLine();
                 Main_Menu.MainMenu();
                 break;

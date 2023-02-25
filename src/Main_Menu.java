@@ -15,5 +15,6 @@ public class Main_Menu {
         System.out.println("Press 4 : Update Employee Details");
         System.out.println("Press 5 : Exit the EMS Portal");
         System.out.print("Please Enter choice : ");
+        Employee_Management_System.Manage_System();
     }
 }
