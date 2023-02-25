@@ -34,6 +34,17 @@ public class Employee_Management_System {
             case 2:
                 break;
             case 3:
+                System.out.print("Please Enter Employee's ID: ");
+                int ID = Input.nextInt();
+                String file_name = String.format("file%s.txt", ID);
+                try {
+                    Employee_Remove.Delete_File(file_name);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.print("\nPress Enter to Continue\n");
+                Input.nextLine();
+                Main_Menu.MainMenu();
                 break;
             case 4:
                 break;
