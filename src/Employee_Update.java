@@ -44,12 +44,19 @@ public class Employee_Update{
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            // Rename the file in case the ID is changed
+            String old_name = String.format("file%s.txt", ID);
+            System.out.println(old_name);
+            String new_name = String.format("file%s.txt", newRows[4]);
+            System.out.println(new_name);
+            File old_file = new File(old_name);
+            if (old_file.renameTo(new File(new_name))){
+                System.out.println("Employee have updated successfully!");
+            } else{
+                System.out.println("Employee have not updated successfully!");
+            }
         }
-        // Rename the file in case the ID is changed
-        String old_name = String.format("file%s.txt", ID);
-        String new_name = String.format("file%s.txt", newRows[4]);
-        File old_file = new File(old_name);
-        old_file.renameTo(new File(new_name));
     }
     public static String[] Read_file(int ID, String key_word, String changeable_element){
         // Read the file line by line

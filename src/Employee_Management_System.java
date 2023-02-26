@@ -11,7 +11,6 @@ public class Employee_Management_System {
         Scanner Input1 = new Scanner(System.in);
         Scanner Input2 = new Scanner(System.in);
         int choice = Input.nextInt();
-
         switch (choice){
             case 1:
                 try{
@@ -74,7 +73,8 @@ public class Employee_Management_System {
                 CodeExit.Code_exit();
                 break;
             default:
-                System.out.println("Please chose numbers from list:");
+                System.out.print("Please chose numbers from list:");
+                choice = Input.nextInt();
                 Main_Menu.MainMenu();
                 break;
         }
@@ -91,17 +91,6 @@ public class Employee_Management_System {
             if (ch == '\n'){
                 Main_Menu.MainMenu();
                 break;
-            }
-        }
-    }
-
-    public static void Check_Voice(int voice){
-        while (true) {
-            if (voice >= 1 && voice <= 5) {
-                break;
-            } else {
-                System.out.print("Please chose categories from the list: ");
-
             }
         }
     }
