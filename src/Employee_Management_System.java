@@ -4,13 +4,14 @@ public class Employee_Management_System {
     Employee_Management_System(int choice){
         this.choice = choice;
     }
-    public static void Manage_System(){
+    public static void Manage_System() throws InputMismatchException{
         Scanner Input = new Scanner(System.in);
         Scanner Input1 = new Scanner(System.in);
         Scanner Input2 = new Scanner(System.in);
         int choice = Input.nextInt();
         switch (choice){
             case 1:
+                try{
                 System.out.print("Enter Employee's name: ----------: ");
                 Input.nextLine();
                 String Employee_Name = Input1.nextLine();
@@ -31,15 +32,22 @@ public class Employee_Management_System {
                 long Employee_Contact = Input.nextLong();
                 Employee_Add Employee = new Employee_Add(Employee_Name, Employee_Age, Employee_Email, Employee_Position, Employee_ID, Employee_Salary, Employee_Contact);
                 Employee.Create_File();
-                System.out.print("\nPress Enter to Continue\n");
-                Input.nextLine();
-                Main_Menu.MainMenu();
+                    System.out.print("\nPress Enter to Continue\n");
+                    String skip = Input.next();
+                    Main_Menu.MainMenu();
+                }catch (Exception exception){
+                    throw new InputMismatchException("Something went wrong, please try again");
+
+                }finally {
+                    Main_Menu.MainMenu();
+                }
                 break;
             case 2:
                 System.out.print("Please Enter Employee's ID: ");
                 int ID = Input.nextInt();
                 Employee_Show.show_File(ID);
                 System.out.print("\nPress Enter to Continue\n");
+                Input.next();
                 Main_Menu.MainMenu();
                 break;
             case 3:
@@ -52,10 +60,21 @@ public class Employee_Management_System {
                     throw new RuntimeException(e);
                 }
                 System.out.print("\nPress Enter to Continue\n");
-                Input.nextLine();
+                Input.next();
                 Main_Menu.MainMenu();
                 break;
             case 4:
+                System.out.print("Please Enter Employee's ID: ");
+                ID = Input.nextInt();
+                Input.nextLine();
+                System.out.print("Please Enter the detail you want to Update :");
+                String key_word = Input1.nextLine();
+                System.out.print("Please Enter the Updated Info :");
+                String changeable_element = Input2.nextLine();
+                Employee_Update.update_File(ID, key_word, changeable_element);
+                System.out.print("\nPress Enter to Continue\n");
+                Input.next();
+                Main_Menu.MainMenu();
                 break;
             case 5:
                 CodeExit.Code_exit();
