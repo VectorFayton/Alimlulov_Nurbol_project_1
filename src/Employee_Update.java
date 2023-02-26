@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Employee_Update{
     public Employee_Update(){
     }
-    public static void update_File(int ID, String key_word, String changeable_element) {
+    public static void update_File(int ID, String key_word, String changeable_element) throws IOException {
         // Define the new rows to be written to the file
         String[] newRows = Read_file(ID, key_word, changeable_element);
 
@@ -34,8 +34,11 @@ public class Employee_Update{
             // Close the file reader
             reader.close();
 
+            // Delete previous file
+            File file = new File("Alimkulov_Nurbol_project_1/file" + ID + ".txt");
+            file.delete();
             // Open the file in write mode
-            BufferedWriter writer = new BufferedWriter(new FileWriter(String.format("file%s.txt", ID)));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(String.format("file%s.txt", newRows[4])));
 
             // Write the modified lines back to the file
             writer.write(sb.toString());
@@ -43,24 +46,17 @@ public class Employee_Update{
             // Close the file writer
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException("Employee not exist");
         } finally {
             // Rename the file in case the ID is changed
-            String old_name = String.format("file%s.txt", ID);
-            System.out.println(old_name);
-            String new_name = String.format("file%s.txt", newRows[4]);
-            System.out.println(new_name);
-            File old_file = new File(old_name);
-            if (old_file.renameTo(new File(new_name))){
-                System.out.println("Employee have updated successfully!");
-            } else{
-                System.out.println("Employee have not updated successfully!");
-            }
+            File file = new File("Alimkulov_Nurbol_project_1/file" + ID + ".txt");
+            file.delete();
         }
     }
     public static String[] Read_file(int ID, String key_word, String changeable_element){
         // Read the file line by line
         String[] data_file = Employee_Show.read_File(ID);
+        Scanner Input = new Scanner(System.in);
         // Analyze Key word, then change element that we want
         switch (key_word){
             case "Name":
@@ -84,6 +80,9 @@ public class Employee_Update{
             case "Contact":
                 data_file[6] = changeable_element;
                 break;
+            default:
+                System.out.print("Please chose from the list:");
+                key_word = Input.nextLine();
         }
         return data_file;
     }

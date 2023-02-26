@@ -67,6 +67,8 @@ public class Employee_Management_System {
                 System.out.print("Please Enter the Updated Info :");
                 String changeable_element = Input2.nextLine();
                 Employee_Update.update_File(ID, key_word, changeable_element);
+                File file = new File(String.format("file%s.txt", ID));
+                file.delete();
                 Press_Enter();
                 break;
             case 5:
