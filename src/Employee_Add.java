@@ -3,12 +3,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Employee_Add extends EmployeeDetail{
-
+    // Constructor where we send data to super class
     public Employee_Add(String employee_Name, int employee_Age, String employee_Email, int employee_Position, int employee_ID, float employee_Salary, long employee_Contact){
         super(employee_Name, employee_Age, employee_Email, employee_Position,employee_ID, employee_Salary, employee_Contact);
     }
     public void Create_File(){
-        String file_Name = "file" + super.Employee_ID + ".txt";
+        String file_Name = "file" + super.Employee_ID + ".txt"; // Name of file is "file" + ID + ".txt"
         try{
             File file = new File(file_Name);
             if(file.createNewFile()){
