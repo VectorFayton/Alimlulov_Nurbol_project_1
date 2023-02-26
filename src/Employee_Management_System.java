@@ -80,9 +80,13 @@ public class Employee_Management_System {
     }
     // Method which return to Main Menu if you press Enter
     public static void Press_Enter() throws IOException {
+        // Print message
         System.out.print("\nPress Enter to Continue...\n");
+        // Create infinite loop
         while (true){
+            // Read symbol from console
             char ch = (char) System.in.read();
+            // Programme doesn't continue while user doesn't write any symbol
             if (ch == '\n'){
                 Main_Menu.MainMenu();
                 break;
