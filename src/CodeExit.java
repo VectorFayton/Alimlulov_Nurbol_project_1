@@ -1,8 +1,10 @@
 public class CodeExit {
     public static void Code_exit(){
+        // Print farewell
         System.out.println("\n************************************************* \n" +
                 "Thank You For Sharing your details :) \n" +
                 "*************************************************");
-        System.exit(1);
+        // Function that close the code
+        System.exit(0);
     }
 }

@@ -35,7 +35,11 @@ public class Employee_Show {
                 "Employee position  : %s\n " +
                 "Employee Salary    : %s$\n ", read_String_Line[4], read_String_Line[0], read_String_Line[1], read_String_Line[6], read_String_Line[2], read_String_Line[3], read_String_Line[5]);
         System.out.println(Output);
-        Main_Menu.MainMenu();
+        try {
+            Main_Menu.MainMenu();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

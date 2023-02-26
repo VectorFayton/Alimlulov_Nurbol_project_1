@@ -1,10 +1,11 @@
+import java.io.IOException;
 import java.util.*;
 
 public class Main_Menu {
     public Main_Menu(){
 
     }
-    public static void MainMenu(){
+    public static void MainMenu() throws IOException {
         Scanner Input = new Scanner(System.in);
         System.out.println("************************************************* \n" +
                 "Organization Management System \n" +
