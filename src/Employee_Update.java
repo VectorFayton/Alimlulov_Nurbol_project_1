@@ -1,64 +1,14 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Employee_Update{
-    public Employee_Update(){
+public class Employee_Update {
+    public Employee_Update() {
     }
-    public static void update_File(int ID, String key_word, String changeable_element) throws IOException {
-        // Define the new rows to be written to the file
-        String[] newRows = Read_file(ID, key_word, changeable_element);
 
-        // Open the file in read mode
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(String.format("file%s.txt", ID)));
-            String line = reader.readLine();
-            StringBuilder sb = new StringBuilder();
-
-            // Read the file content line by line and modify the lines
-            int i = 0;
-            while (line != null) {
-                // Check if there are new rows to be written to the file
-                if (i < newRows.length) {
-                    // Use the new row instead of the old row
-                    line = newRows[i];
-                    i++;
-                }
-
-                // Add the line to the StringBuilder
-                sb.append(line).append("\n");
-
-                // Read the next line
-                line = reader.readLine();
-            }
-
-            // Close the file reader
-            reader.close();
-
-            // Delete previous file
-            File file = new File("Alimkulov_Nurbol_project_1/file" + ID + ".txt");
-            file.delete();
-            // Open the file in write mode
-            BufferedWriter writer = new BufferedWriter(new FileWriter(String.format("file%s.txt", newRows[4])));
-
-            // Write the modified lines back to the file
-            writer.write(sb.toString());
-
-            // Close the file writer
-            writer.close();
-        } catch (IOException e) {
-            throw new IOException("Employee not exist");
-        } finally {
-            // Rename the file in case the ID is changed
-            File file = new File("Alimkulov_Nurbol_project_1/file" + ID + ".txt");
-            file.delete();
-        }
-    }
-    public static String[] Read_file(int ID, String key_word, String changeable_element){
-        // Read the file line by line
+    public static void update_File(int ID, String key_word, String changeable_element) {
         String[] data_file = Employee_Show.read_File(ID);
-        Scanner Input = new Scanner(System.in);
-        // Analyze Key word, then change element that we want
-        switch (key_word){
+        System.out.println(data_file);
+        switch (key_word) {
             case "Name":
                 data_file[0] = changeable_element;
                 break;
@@ -80,10 +30,17 @@ public class Employee_Update{
             case "Contact":
                 data_file[6] = changeable_element;
                 break;
-            default:
-                System.out.print("Please chose from the list:");
-                key_word = Input.nextLine();
         }
-        return data_file;
+        System.out.println(data_file);
+        try {
+            String file_name = String.format("file%s.txt", ID);
+            Employee_Remove.Delete_File(file_name);
+            String changed_file_name = String.format("file%s.txt", data_file[4]);
+            FileWriter file = new FileWriter(changed_file_name);
+            file.write(String.format("%s \n%s \n%s \n%s \n%s \n%s \n%s", data_file[0], data_file[1], data_file[2], data_file[3], data_file[4], data_file[5], data_file[6]));
+            file.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
